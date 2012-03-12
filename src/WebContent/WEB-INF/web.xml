@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>csc309a3</display-name>
+	<servlet>
+		<description>Run a search for available flights on the specified date</description>
+		<display-name>Search</display-name>
+		<servlet-name>Search</servlet-name>
+		<servlet-class>csc309a3.Search</servlet-class>
+	</servlet>
+	<servlet>
+		<description>Initialize the website</description>
+		<display-name>InitSite</display-name>
+		<servlet-name>JSPInitialization</servlet-name>
+		<servlet-class>csc309a3.Initialization</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<description>
+		Save the transaction to our records</description>
+		<display-name>Save</display-name>
+		<servlet-name>Save</servlet-name>
+		<servlet-class>csc309a3.Save</servlet-class>
+	</servlet>
+	<servlet>
+		<description>
+		Full transaction history stored so far</description>
+		<display-name>history</display-name>
+		<servlet-name>history</servlet-name>
+		<servlet-class>csc309a3.history</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Search</servlet-name>
+		<url-pattern>/search</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Save</servlet-name>
+		<url-pattern>/save</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>history</servlet-name>
+		<url-pattern>/history</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

@@ -1,0 +1,206 @@
+@import "config";
+@import "site.shared.functions";
+
+// functions/css parts that should be common between index and other pages
+$border_width: 1px;
+$border_radius: $width_game_border;
+
+$border_color: $background_color;//$color_game_border;
+
+@mixin flights_main {
+	//#flights
+	color: #000;
+	margin: 0 auto;
+	position: relative;
+	// top: 1em;
+}
+
+@mixin flights_topbottom($fsize, $showshadow: 1) {
+	.top {
+		h2 {
+			font-size: $fsize / 2.5;
+
+			margin: 0;
+			padding: 0;
+
+			background-color: $background_color;
+
+			width: 7em;
+
+			text-align: center;
+
+			@include bordersel($border_radius, 0px, $border_radius, 0px);
+			border: $border_width solid $border_color;
+			border-bottom: none;
+
+			padding: .5em;
+
+			@if $showshadow == 1 {
+				box-shadow: $shadowstyle;
+				-moz-box-shadow: $shadowstyle;
+				-webkit-box-shadow: $shadowstyle;
+			}
+		}
+
+		width: 100%;
+		background-color: $color_body;
+	}
+
+	.bottom {
+		background-color: $background_color;
+
+		@include bordersel(0px, $border_radius, $border_radius, $border_radius);
+		border: $border_width solid $border_color;
+
+		padding: 1em;
+
+		@if $showshadow == 1 {
+			box-shadow: $shadowstyle;
+			-moz-box-shadow: $shadowstyle;
+			-webkit-box-shadow: $shadowstyle;
+		}
+	}
+}
+
+@mixin flights_form($fsize, $displaydateform: 0, $sizefactor: 1) {
+	form {
+		border: none;
+
+		fieldset {
+			border: none;
+
+			h3 {
+				font-size: $fsize / 3;
+
+				padding: 0;
+				margin: .3em;
+
+				&:after {
+					content: ":";
+				}
+			}
+
+			div.part {
+				margin-bottom: 1.5em * $sizefactor;
+
+				&:last-child {
+					margin-bottom: 0em;
+				}
+
+				&.date {
+					label, small {
+						display: none;
+					}
+
+					input[type="text"] {
+						@if $sizefactor == 1 {
+							width: 150px;
+						} @else {
+							width: 100%;
+						}
+						@if $displaydateform == 0 {
+							display: none;
+						}
+					}
+				}
+
+				#Search {
+					cursor: pointer;
+					font-size: $fsize / 2;
+					font-weight: bold;
+
+					color: #fff;
+					padding-left: 1em * $sizefactor;
+					padding-right: 1em * $sizefactor;
+					padding-top: .4em * $sizefactor;
+					padding-bottom: .4em * $sizefactor;
+
+					display: block;
+
+					width: 100%;
+
+					$btncolor: lighten(desaturate($s6, 2), 0);
+					$btncolor2: lighten(desaturate($btncolor, 5), 15);
+					$shadow: rgba(0, 0, 0, .5);
+
+					$shadowhover: rgba(0, 0, 0, .3); //
+					@include makebutton($btncolor2, $shadowhover);
+
+					border: 2px solid darken($btncolor2, 30);
+					text-shadow: 0 -1px 0 $shadowhover;
+
+					&:hover {
+						color: #fff !important;
+
+						@include makebutton($btncolor, $shadow);
+
+						border: 2px solid $btncolor;
+						text-shadow: 0 -1px 0 $shadow;
+					}
+				}
+			}
+
+			// button-like radios
+			$lpad: 50px;
+			$iwidth: 23px;
+			input[type="radio"].btn {
+				display: none;
+				color: #000;
+
+				& + label {
+					font-size: $fsize / 3.5;
+					font-weight: bold;
+
+					color: #ccc;
+					// padding-left: 1em;
+					padding-right: 1em;
+					padding-top: .4em;
+					padding-bottom: .4em;
+
+					display: block;
+					margin-bottom: .3em;
+
+					padding-left: ($lpad - $iwidth);
+
+					@include makebutton(darken(#fff, 35), $shadow: rgba(255, 255, 255, 1));
+
+					&:hover {
+						color: #000;
+						//@include makebutton($color_game_highlight, $shadow: rgba(0, 0, 0, 0.8));
+						@include makebutton(darken(#fff, 0), $shadow: rgba(0, 0, 0, 1));
+					}
+
+					cursor: pointer;
+
+					small {
+						font-size: $fsize / 4.5;
+					}
+
+					@include simpleshadow;
+				}
+
+				&:checked + label {
+					color: #000;
+					@include makebutton($color_game_highlight, $shadow: rgba(0, 0, 0, 0.8));
+
+					padding-left: ($lpad - $iwidth);
+
+					position: relative;
+
+					&:before {
+						// whooooooooooo unicode!
+						// http://www.fileformat.info/info/unicode/char/2713/index.htm
+						content: "\02713";
+						color: #fff;
+
+						// position relative to text
+						position: absolute;
+						left: 10px;
+					}
+
+					@include simpleshadow;
+				}
+			}
+		}
+	}
+}

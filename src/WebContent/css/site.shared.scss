@@ -1,0 +1,96 @@
+// mixins or stylings shared by pages across the site
+
+@import "config";
+@import "site.shared.functions";
+
+@import "index.localfonts";
+
+/* page look */
+* {
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	background-color: $color_body;
+	// overflow: hidden;
+	// overflow-x: hidden;
+
+	font-family: $font_opensans;
+	color: #fff;
+}
+
+a {
+	color: #fff;
+
+	&:hover {
+		color: $color_game_border;
+	}
+}
+
+.container {
+	.content {
+		width: 100%;
+		top: 10px;
+		// position: absolute;
+	}
+}
+
+input[type="text"], select {
+	font-family: $font_opensans;
+	outline: none;
+	font-size: $fontsize / 3.5;
+
+	&:focus {
+		// border: $width_game_border solid $color_game_highlight;
+		outline: $width_game_border solid $color_game_highlight !important;
+	}
+
+	&:hover {
+		// border: $width_game_border solid $color_game_highlight;
+		outline: $width_game_border solid $s1;
+		// @include shadow($color_game_highlight, 6px);
+	}
+}
+
+input[type="text"]:-moz-placeholder {
+	color: #BBB;
+}
+
+#title {
+	z-index: 1000;
+
+	font-size: $fontsize;
+
+	margin: 0px auto;
+	padding: 0;
+
+	width: 100%;
+	text-align: center;
+
+	color: $color_game_highlight;
+
+	font-family: $font_lobsertwo;
+
+	$n1: darken($s5, 5);//$color_game_border;
+	$n2: $color_game_highlight;
+	@include neontext($n1, $n1, $n2);
+	
+	span {
+		z-index: 900;
+
+		font-family: $font_luckiest;
+		font-weight: bold;
+
+		@include neontext($n2, $n2, $n1, 1px);
+	}
+
+	margin-bottom: 0.3em;
+
+	a {
+		text-decoration: none !important;
+		&:hover {
+			color: $color_game_highlight;
+			text-decoration: none !important;
+		}
+	}
+}

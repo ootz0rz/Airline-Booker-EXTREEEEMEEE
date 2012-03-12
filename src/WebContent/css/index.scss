@@ -1,0 +1,628 @@
+/* all values adjust specifically for FF where needed....chrome secondary */
+
+// for future? http://jsfiddle.net/joshnh/4hrCv/
+
+@import "site.shared";
+@import "index.common";
+
+.container {
+	.content.search {
+		text-align: center;
+	}
+}
+
+div#history {
+	// display: inline-block;
+
+	margin: 0 auto;
+	position: relative;
+
+	text-align: center;
+
+	top: 3em;
+
+	width: 15em;
+	
+	a {
+		display: block;
+		width: 100%;
+
+		padding-top: .5em;
+		padding-bottom: .5em;
+	}
+}
+
+#flights, #flights.search {
+	vertical-align: top;
+
+	@include flights_main;
+
+	width: 600px;
+	
+	@include flights_topbottom($fontsize);
+
+	@include flights_form($fontsize);
+}
+
+#flights {
+	// save results
+	.bottom.savedetails {
+		div.part {
+			h3 {
+				&:after {
+					content: ': ';
+				}	
+			}
+				
+			div {
+				h4 {
+					padding: 0;
+					margin: 0;
+
+					display: inline-block;
+
+					&:after {
+						content: ': ';
+					}
+				}
+
+				padding-bottom: .5em;
+			}
+
+			a.button {
+				display: block;
+				width: 97%;
+				margin-top: 1em;
+			}
+		}
+	}
+}
+
+$flightswidth: 180px;
+$resultswidth: 550px;
+$margin: 10px;
+$left_flights: -1 * (($flightswidth + $resultswidth) / 2) + ($flightswidth / 2) + ($margin / 2);
+$marginpadding: 0.3em; // space between #flights, #results, x2
+
+#flights.search {
+	margin-right: $marginpadding;
+}
+#flights {
+	text-align: left;
+
+	&.search {
+		$fsize: $fontsize * 0.8;
+
+		.top {
+			h2 {
+				font-size: $fsize / 2.5 !important;
+			}
+		}
+
+		form {
+			fieldset {
+				h3 {
+					font-size: $fsize / 3 !important;
+				}
+
+				div.part {
+					&.date {
+						input[type="text"] {
+							display: inline !important;
+						}
+					}
+					#Search {
+						font-size: $fsize / 2 !important;
+					}
+				}
+
+				input[type="radio"].btn {
+					& + label {
+						font-size: $fsize / 3.5 !important;
+						small {
+							font-size: $fsize / 4.5 !important;
+						}
+					}
+				}
+			}
+		}
+
+		input[type="text"] {
+			font-size: $fsize / 3.5 !important;
+			width: 146px !important;
+		}
+
+		@include flights_form(1, 0.5);
+
+		width: $flightswidth !important;
+
+		.bottom {
+			padding: 0em !important;
+		}
+
+		display: inline-block !important;
+	}
+}
+
+/* history page */
+body.history {
+	margin: .5em;
+
+	#flights {
+		@include noshadow;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+
+		.top {
+			margin: 0;
+			h2 {
+				// @include noshadow;
+				width: 14em;
+			}
+		}
+
+		.bottom {
+			margin: 0;
+			@include noshadow;
+
+			// overflow: auto;
+			background-color: transparent;
+
+			@include bordersel(0px, 0px, 0px, 0px);
+			border: none !important;
+
+			padding: 0em;
+			width: 100%;
+
+			table {
+				width: 100%;
+				background-color: $background_color;
+
+				@include bordersel(0px, $border_radius, $border_radius, $border_radius);
+				border: $border_width solid $border_color;
+
+				padding: .5em;
+				margin: 0;
+
+				box-shadow: $shadowstyle;
+				-moz-box-shadow: $shadowstyle;
+				-webkit-box-shadow: $shadowstyle;
+				
+				thead {
+					tr {
+						th {
+							cursor: pointer;
+
+							// background-color: #fff;
+							color: #000;
+
+							border: $border_width solid #000;
+
+							white-space: nowrap;
+							padding-left: .5em;
+							// padding-right: .5em;
+							text-align: left;
+
+							padding-right: 2em;
+							color: #000;
+						}
+					}
+				}
+
+				tbody {
+					tr {
+						&:nth-child(odd) {
+							background-color: lighten($background_color, 5);
+						}
+						&:nth-child(even) {
+							background-color: darken($background_color, 5);
+						}
+						&:hover { 
+							background-color: $s2;
+						}
+						
+						td {
+							border: $border_width solid #000;
+
+							white-space: nowrap;
+							padding-left: .5em;
+							padding-right: .5em;
+							text-align: left;
+
+							color: #000;
+
+							background-color: transparent !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* search results */
+#results {
+	margin-left: $marginpadding;
+	text-align: left;
+	display: inline-block;
+
+	width: $resultswidth;
+
+	.main {
+		color: #000;
+
+		background-color: $background_color;
+		border: $border_width solid $border_color;
+		padding: 1em;
+		padding-top: 0.4em;
+		@include bordersel($border_radius, $border_radius, $border_radius, $border_radius);
+
+		box-shadow: $shadowstyle;
+		-moz-box-shadow: $shadowstyle;
+		-webkit-box-shadow: $shadowstyle;
+
+		h2 {
+			padding: 0;
+			margin: 0;
+			padding-bottom: 1em;
+
+			&:after {
+				content: ':';
+			}
+		}
+
+		.results {
+			table {
+				padding-top: 1em;
+				padding-bottom: 2em;
+				border-collapse: collapse;
+
+				width: 100%;
+
+				thead {
+					tr {
+						th {
+							text-align: center;
+							border-left: 1px solid #000;
+							// border-bottom: 1px solid #000;
+
+							&:first-child {
+								border-left: none;
+							}
+						}
+					}
+				}
+
+				tbody {
+					tr {
+						&:nth-child(odd) {
+							background-color: lighten($background_color, 5);
+						}
+						&:nth-child(even) {
+							background-color: darken($background_color, 5);
+						}
+
+						&:hover { 
+							background-color: $s2;
+						}
+
+						td {
+							text-align: center;
+
+							padding: 0.3em;
+							padding-top: 0.6em;
+							padding-bottom: 0.6em;
+							border-left: 1px solid #000;
+
+							&:first-child {
+								background-color: transparent !important;
+								width: 7em;
+
+								text-align: center;
+
+								border-left: none;
+							}
+
+							a {
+								font-size: 90%;
+								padding: .3em !important;
+								padding-top: .06em !important;
+								padding-bottom: .06em !important;
+
+								font-weight: normal;
+
+								span {
+									font-weight: bold;
+									padding-left: 1.5em;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			#transactform {
+				fieldset {
+					margin: 0;
+					padding: 0;
+					border: none;
+
+					div.part {
+						margin-bottom: 1.5em;
+
+						&:last-child {
+							margin-bottom: 0em;
+						}
+
+						input[type="text"], select {
+							width: 50%;
+
+							&.snum {
+								width: 20%;
+							}
+
+							margin-bottom: 0.3em;
+						}
+
+						h3,label {
+							display: block;
+
+							font-size: $fontsize / 3.3;
+
+							padding: 0;
+							margin: .3em;
+							margin-left: 0 !important;
+							margin-bottom: 0;
+							// margin-top: .5em;
+
+							&:after {
+								content: ":";
+							}
+
+							&.error {
+								display: inline;
+
+								&:after {
+									content: '' !important;
+								}
+
+								color: red;
+								font-weight: bold;
+
+								padding-left: 1em;
+							}
+						}
+					}
+				}
+			}
+
+			#continue, #customer {
+				width: 100%;
+				display: block;
+
+				padding: 0;
+				// margin: 0;
+				margin-top: 0.5em;
+				margin-right: 1em;
+				// margin-bottom: 0.5em;
+
+				.button {
+					font-size: 160%;
+
+					display: block;
+					width: 100%;
+
+					padding-top: .5em;
+					padding-bottom: .5em;
+
+					text-align: center;
+				}
+			}
+
+			#seats {
+				$eggheight: 200px; 
+				$eggwidth: 60px;
+				
+				text-align: center;
+				display: block;
+				padding: 0;
+				margin: 0;
+
+				margin-top: 1em;
+				width: 100%;
+
+				h2 {
+					text-align: left;
+				}
+
+				position: relative;
+				// z-index: 100;
+
+				#legend {
+					position: absolute;
+					display: block;
+
+					top: 7em;
+					right: 4em;
+
+					text-align: left;
+
+					border: 2px dashed #999;
+
+					padding: 0.5em;
+
+					h2 {
+						padding: 0;
+						padding-bottom: 0.5em;
+						margin: 0;
+						font-size: 95%;
+					}
+
+					ul {
+						font-size: 80%;
+
+						list-style-type: none;
+
+						padding: 0;
+						margin: 0;
+						li {
+							padding: 0;
+							margin: 0;
+
+							padding-left: 1em;
+							padding-bottom: 0.5em;
+							vertical-align: middle;
+
+							&.free, &.booked, &.chosen {
+								&:before {
+									content: ' ';
+									display: inline-block;
+									border: 3px solid #000;
+
+									background-color: #fff;
+
+									width: $eggheight / 20;
+									height: $eggwidth / 10;
+
+									position: relative;
+
+									padding: .2em;
+
+									margin-right: 1em;
+
+									vertical-align: middle;
+								}
+							}
+
+							&.free {
+								
+							}
+
+							&.booked {
+								&:before {
+									background-color: $diagram_unavail;
+								}
+							}
+
+							&.chosen {
+								&:before {
+									background-color: $diagram_select;
+								}
+							}
+						}
+					}
+				}
+
+				ul#thefreakingegg {
+					display: inline-block;
+					background-color: #fff;
+					height: $eggheight;
+					width: $eggwidth;
+
+					$top: 150px;
+					$skew: $top * 5 / 10;
+					border-top-left-radius: $skew $top;
+					border-top-right-radius: $skew $top;
+
+					border-bottom-left-radius: 20px;
+					border-bottom-right-radius: 20px;
+
+					border: 3px solid #000;
+
+					list-style-type: none;
+
+					position: relative;
+					left: -25%;
+					// z-index: 1;
+
+					&:before {
+						
+					}
+
+					li {
+						padding: 0;
+						margin: 0;
+						width: 20%;
+
+						display: inline-block;
+
+						position: relative;
+						top: $eggheight / 1.75;
+						// left: -1 * $eggwidth / 2;
+
+						&#lseat0 {
+							left: -1 * $eggwidth / 1.5;
+						}
+						&#lseat1 {
+							left: $eggwidth * -0.3;
+						}
+						&#lseat2 {
+							left: $eggwidth * -0.15;
+						}
+						
+						input[type="radio"].seat {
+							display: none;
+							// width: 100%;
+
+							& + label, &:checked + label {
+								display: block;
+								border: 3px solid #000;
+
+								background-color: #fff;
+
+								width: $eggheight / 20;
+								height: $eggwidth / 10;
+
+								position: relative;
+
+								padding: .2em;
+							}
+
+							& + label {
+								cursor: pointer;
+
+								&:hover {
+									background-color: $s6;
+									// @include shadow($s6, $size: 2px);
+								}
+							}
+
+							&:checked + label {
+								cursor: default !important;
+
+								border: 3px solid #000;
+
+								background-color: $diagram_select;
+
+								&:hover {
+									// @include noshadow;
+								}
+							}	
+
+							&.taken {
+								&:checked + label {
+									cursor: default !important;
+
+									border: 3px solid #000;
+
+									background-color: $diagram_unavail;
+
+									&:hover {
+										// @include noshadow;
+									}
+								}	
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@import "jquery.custom";
+
+@import "modal";
+
+@import "buttons";

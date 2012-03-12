@@ -1,0 +1,179 @@
+
+<!-- saved from url=(0071)http://www.cs.toronto.edu/~delara/courses/csc309/assignments/a3/a3.html -->
+<html><!-- #BeginTemplate "/Templates/standard.dwt" --><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title> CSC 309</title>
+	<link rel="stylesheet" type="text/css" href="./A3, Airline Reservation System_files/bubble.css">
+		<link rel="stylesheet" type="text/css" href="./A3, Airline Reservation System_files/print.css" media="print">
+
+<link type="image/png" rel="shortcut icon" href="http://www.cs.toronto.edu/favicon.ico"></head>
+
+<body>
+
+<center>
+
+<h1> Assignment 3 </h1>
+<h1>Airline Reservation System</h1>
+<h1> Due Date: March 9 at 5:00 PM </h1>
+
+</center>
+
+<h3> Description </h3>
+
+
+<p>
+This is a group assignment.  You will work on this assignment in groups of 2 students.  You can team up with any student in the class.  Only one student should submit the assignment on BlackBoard.   However, make sure that the names and student numbers of both group members are clearly indicated in the README file.
+</p>
+
+<p>
+Build a web based booking system for a local airline that runs
+multiple daily flights between Toronto and Montreal.
+</p>
+
+<p>
+Your site should let customers book one-way tickets
+between Toronto and Montreal.  Assume that the company has two
+identical 3-seat planes that fly a total of 4 daily flights, which
+depart from either Toronto or Montreal at 10am and 8pm.
+</p>
+
+<p>
+To book a flight, a customer specifies the departure city and date
+(e.g., Leaving from Toronto on March 10, 2012).  The site should then
+present the user with the list of matching flights that have available
+space.  After the user selects one of these flights, your site should
+let the customer choose their seat assignment by clicking on an
+available seat on the plane's schematics. Figure 1, shows a sample plane schematics.  Available seats are white, occupied seats are yellow, and
+the customer's current seat selection is green.  </p>
+
+
+
+<center>
+<img src="./A3, Airline Reservation System_files/plane.png">  
+<p style="margin-left:150px; margin-right:150px;"><b>Figure 1</b>: Sample plane schematics. Available and occupied
+seats are shown in white and yellow, respectively.  The customer's current
+seat selection is shown in green.</p>
+</center>
+
+<p>
+Once the user is happy with their seat selection, your site should
+collect their credit card information (including customer name, card
+number and expiration date), and their billing address (including
+street number, city, province and postal code).  Validate all inputs
+and record the payment. 
+</p>
+
+<p>
+Finally, your site should display a summary page with the customer's
+flight information, and provide a way to
+print the page (a simple example that shows how to print from
+JavaScript is available <a href="http://www.javascripter.net/faq/printing.htm">here</a><a>). </a></p><a>
+
+
+<p>For simplicity, you can make the following assumptions:
+</p>
+
+<ul>
+<li> Tickets cannot be bought for the current date </li>
+<li> Tickets can be bough at most 2 weeks in advance</li>
+<li> Only 1 ticket can be bought at a time</li>
+<li> All tickets cost $100
+</li></ul>
+
+
+</a><p><a>
+To implement this assignment you will need to setup and run Apache
+Tomcat.  Instructions for running Tomcat on CDF are available </a><a href="http://www.cs.toronto.edu/~delara/courses/csc309/guide/tomcat.html">here</a>.
+</p>
+
+<h3>Requirements</h3>
+
+
+<ul>
+
+<li> Implement your application using only the following technologies: 
+Java Servlets, JSP, XHTML, CSS, JavaScript, and
+DOM.  Use CSS style sheets in favor of deprecated HTML tags and
+attributes. </li>
+
+<li>Store all information about available seats and sold flights in
+memory.  </li>
+
+<li>For simplicity, assume that only 1 customer will use the site at any
+given time, i.e., there is no need to implement concurrency control
+for this assignment.</li>
+
+
+<li>Your site should include a page that provides
+information about all tickets that have been sold since the site
+started running.  For each transaction, include information about
+the flight, seat number and the customer's credit card data.
+</li>
+
+<li> Your application should be easy to use.</li>
+
+<li>The main entry page for your site should be called
+<em>index.html</em>.</li>
+
+<li> Make sure your site functions correctly in the CDF
+environment.  TAs will not debug so test to ensure it works the first
+time! </li>
+
+<li> If you choose to implement your site using servlets, do not
+submit compiled files (i.e., .class files).  Instead, provide source
+files and either an Ant or a Makefile for building your
+application. </li>
+
+ 
+</ul>
+
+
+
+
+<h3> Deliverables </h3>
+
+<p>
+Put all necessary files in one directory, and archive the directory
+into a single file using <em>tar</em> or a similar utility. Finally, submit
+your assignment using the BlackBoard system.
+</p>
+
+<p>
+You electronic submission should include the following items:
+</p>
+   
+<ul>
+    
+<li> README file with documentation for your Web site (brief explanations
+     of how it all works).  Include name and student number of group members.</li>
+<li> CSS file(s).</li>
+<li> XHTML file(s).</li>
+<li> JavaScript file(s).</li>
+<li> Java Servlet file(s).  Submit the uncompiled Java source files.</li>
+<li> JSP files </li>
+<li> Makefile for building your site.  This is only needed if you implement your site using servlets. </li>
+</ul>
+
+<p>Finally, all deliverables should be neatly formatted,
+readable,and be properly documented .
+</p>
+
+<p>
+Good luck!
+</p>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="display: none; " id="orbiousinterest_dialog"><div class="container">  <div class="header">Mark as unread</div>  URL <input type="text" value="" class="url" readonly="readonly"><br>  Title <input type="text" value="" class="title"><br>  Tags <input type="text" value="tags, seperated by commas" class="tags empty">  <div class="buttons">     <input type="button" value="Cancel" class="cancel">     <input type="button" value="Save" class="save">  </div></div></div><a id="ORBVIOUS_DOMWindowHost" href="http://www.cs.toronto.edu/~delara/courses/csc309/assignments/a3/a3.html#orbiousinterest_dialog"></a><iframe height="0" width="0" style="display: none; " src=""></iframe></body><link rel="stylesheet" type="text/css" href="data:text/css,"></html>

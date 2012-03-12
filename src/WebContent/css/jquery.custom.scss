@@ -1,0 +1,28 @@
+@import "config";
+@import "site.shared.functions";
+
+/* jquery ui customizing */
+div#date, div#ui-datepicker-div {
+	&.ui-datepicker {
+		font-size: 85% !important;
+	}
+
+	.ui-widget-header {
+		// border: 1px solid darken(#695649,10);
+		border: none !important;
+		background: none !important;
+		// background-color: darken(#695649,10) !important;
+	}
+
+	.ui-datepicker-inline {
+		width: 99.4% !important;
+		// margin-left: 1px !important;
+		margin-right: 20px !important;
+
+		@include simpleshadow;
+	}
+
+	.ui-widget-content {
+		border: none !important;
+	}
+}

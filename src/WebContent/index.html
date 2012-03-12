@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Airline Booker EXTREEEEMEEE!</title>
+
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="jquery/css/custom-theme/jquery-ui-1.8.18.custom.css" />
+	</head>
+	<body>
+        <div class="container">
+            <div class="content">
+                <h1 id="title"><a href="index.html">Airline Booker <span>EXTREEEEMEEE!</span></a></h1>
+                
+                <div id="flights">
+                    <div class="top">
+                        <h2>Book a Flight</h2>
+                    </div>
+                    <div class="bottom">
+                        <form id="searchform" class="main" method="post" action="search">
+                            <fieldset>
+                                <div class="part">
+                                    <h3>To</h3>
+
+                                    <input type="radio" id="toronto" name="from" value="1" class="btn" checked="checked" />
+                                    <label for="toronto">Toronto <small>(from Montreal)</small></label>
+                                    <input type="radio" id="montreal" name="from" value="2" class="btn" />
+                                    <label for="montreal">Montreal <small>(from Toronto)</small></label>
+                                </div>
+
+                                <div class="part date">
+                                    <h3>On</h3>
+                                    <label for="date">Date:</label>
+                                    <div id="date"></div>
+                                    <input type="text" placeholder="date: mm/dd/yyyy" name="datev" id="datev" />
+                                    <small>format: mm/dd/yyyy</small>
+                                </div>
+
+                                <div class="part">
+                                    <input type="submit" name="Search" id="Search" value="Search!" />
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+		<div id="history">
+			<a href="history" class="button s5">Transaction History</a>
+		</div>
+		
+        <!-- OMG WTF BBQ JQUERYYYY -->
+        <script type="text/javascript" src="jquery/js/jquery-1.7.1.min.js"></script>
+        <script type="text/javascript" src="jquery/js/jquery-ui-1.8.18.custom.min.js"></script>
+
+        <!-- my stuff -->
+        <script type="text/javascript" src="js/functions.js"></script>
+        <script type="text/javascript" src="js/modal.js"></script>
+        <script type="text/javascript" src="js/index.shared.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+	</body>
+</html>

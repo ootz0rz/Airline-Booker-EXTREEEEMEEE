@@ -1,0 +1,53 @@
+.container {
+	.content {
+		h1#title {
+			a {
+				text-decoration: none;
+				color: #000;
+			}
+		}
+
+		#flights.printable {
+			.top {
+				display: none;
+			}
+
+			.bottom {
+				.part {
+					&:first-child,&:last-child {
+						display: none;
+					}
+
+					h3 {
+						&:after {
+							content: ': ';
+						}
+
+						&:before {
+							content: 'Transaction ';
+						}
+					}
+						
+					div {
+						h4 {
+							padding: 0;
+							margin: 0;
+
+							display: inline-block;
+
+							&:after {
+								content: ': ';
+							}
+						}
+
+						padding-bottom: .5em;
+					}
+				}
+			}
+		}
+	}
+}
+
+#history {
+	display: none;
+}

@@ -1,0 +1,199 @@
+@import "config";
+@import "site.shared.functions";
+
+/* modal stuff */
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	// background: rgba(255,255,255,0.8);
+	$modalbg: rgba($color_body, 0.8);
+	background: $modalbg;
+	z-index: 9001; /* omg over 9000! */
+
+	opacity: 0;
+	pointer-events: none;
+
+	&:target {
+		/* this is what actually shows the modal */
+		opacity: 1;
+		pointer-events: auto;
+	}
+
+	-webkit-transition: opacity 500ms ease-in;
+	-moz-transition: opacity 500ms ease-in;
+	transition: opacity 500ms ease-in;
+
+	div.mpos {
+		width: 400px;
+		top: 150px;
+		margin: 0px auto;
+		position: relative;
+
+		div.mcontainer {
+			color: #000;
+			background: $background_color;
+
+			padding: 1em;
+
+			border-width: $width_game_border;
+			border-style: solid;
+			border-color: $background_color;
+
+			$boxshadowcolor: $color_game_border;
+			box-shadow: 1px 1px 30px $boxshadowcolor;
+			-moz-box-shadow: 1px 1px 30px $boxshadowcolor;
+			-webkit-box-shadow: 1px 1px 30px $boxshadowcolor;
+
+			h1 {
+				// color: $color_game_border;
+				color: #000;
+				margin: 0px auto;
+
+				width: 100%;
+				text-align: center;
+
+				font-size: 2em;
+				font-weight: bold;
+				line-height: 1em;
+
+				margin-bottom: 0.5em;
+			}
+
+			.mcontent {
+				font-size: 0.8em;
+
+				min-height: 2em;
+
+				input.styled {
+					font-family: $font_opensans;
+					font-weight: bold;
+
+					border-width: 4px;
+					border-style: solid;
+					border-color: #fff;
+
+					transition: all 0.25s ease-in-out;
+					-webkit-transition: all 0.25s ease-in-out;
+					-moz-transition: all 0.25s ease-in-out;
+
+					&:hover, &:focus {
+						border-width: 4px;
+						border-style: solid;
+						border-color: $color_game_border;
+					}
+				}
+
+				div.error {
+					color: lighten(red,25);
+					font-weight: bold;
+				}
+
+				input.error {
+					border-width: 4px !important;
+					border-style: dashed !important;
+					border-color: red !important;
+
+					transition: all 0.25s ease-in-out;
+					-webkit-transition: all 0.25s ease-in-out;
+					-moz-transition: all 0.25s ease-in-out;
+				}
+			}
+		}
+
+		$mbuttonheight: 30px;
+		.mbuttons {
+			// position beneath the errors box properly...
+			position: relative;
+			top: -1em;
+			left: 1px !important;
+			width: auto;
+			float: right;
+
+			text-align: right;
+
+			// styling
+			// margin: 0px auto;
+			// position: relative;
+
+			right: $width_game_border * -1;
+			margin: 0;
+			margin-top: 1em;
+			padding: 0;
+
+			background-color: $background_color;
+			border-width: $width_game_border;
+			border-style: solid;
+			border-color: $background_color;
+
+			height: $mbuttonheight + 2px;
+
+			a {	
+				position: relative;
+				top: 4px;
+
+				cursor: pointer;
+				font-size: $fontsize / 2.5;
+				font-weight: bold;
+
+				
+				// padding-left: 1em / 2;
+				// padding-right: 1em / 2;
+				// padding-top: .1em;
+				// padding-bottom: .1em;
+				// margin-top: 2px;
+				padding: auto;
+				height: $mbuttonheight - 4px;
+				padding-left: 4px;
+				padding-right: 4px;
+			}
+
+			// link colors
+			// default:
+			a {
+				color: #fff;
+
+				$btncolor: lighten(desaturate($s1, 2), 0);
+				$btncolor2: lighten(desaturate($btncolor, 5), 15);
+				$shadow: rgba(0, 0, 0, .5);
+
+				color: #fff !important;
+				$shadowhover: rgba(0, 0, 0, .3); //
+				@include makebutton($btncolor2, $shadowhover);
+
+				border: 2px solid darken($btncolor2, 30) !important;
+				text-shadow: 0 -1px 0 $shadowhover;
+
+				&:hover {
+					border: 2px solid $btncolor !important;
+					text-shadow: 0 -1px 0 $shadow;
+					@include makebutton($btncolor, $shadow);
+				}
+			}
+
+			a.blue {
+				color: #fff;
+
+				$btncolor: lighten(desaturate($s6, 2), 0);
+				$btncolor2: lighten(desaturate($btncolor, 5), 15);
+				$shadow: rgba(0, 0, 0, .5);
+
+				$shadowhover: rgba(0, 0, 0, .3); //
+				@include makebutton($btncolor2, $shadowhover);
+
+				border: 2px solid darken($btncolor2, 30) !important;
+				text-shadow: 0 -1px 0 $shadowhover;
+
+				&:hover {
+					color: #fff !important;
+
+					border: 2px solid $btncolor !important;
+					text-shadow: 0 -1px 0 $shadow;
+					@include makebutton($btncolor, $shadow);
+				}
+			}
+		}
+	}
+}

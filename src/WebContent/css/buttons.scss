@@ -1,0 +1,65 @@
+@import "config";
+@import "site.shared.functions";
+
+@mixin btn($col) {
+	$btncolor: lighten(desaturate($col, 2), 0);
+	$btncolor2: lighten(desaturate($btncolor, 5), 15);
+	$shadow: rgba(0, 0, 0, .5);
+
+	$shadowhover: rgba(0, 0, 0, .3); //
+	@include makebutton($btncolor2, $shadowhover);
+
+	border: 2px solid darken($btncolor2, 30);
+	text-shadow: 0 -1px 0 $shadowhover;
+
+	&:hover {
+		color: #fff !important;
+		@include makebutton($btncolor, $shadow);
+		border: 2px solid $btncolor;
+		text-shadow: 0 -1px 0 $shadow;
+	}
+}
+
+button,a,input[type="submit"] {
+	&.button {
+		text-decoration: none !important;
+		cursor: pointer;
+		font-size: $fontsize / 3;
+		font-weight: bold;
+
+		color: #fff;
+		// padding-left: 1em;
+		// padding-right: 1em;
+		// padding-top: .4em;
+		// padding-bottom: .4em;
+		padding: .3em;
+		margin: 0;
+
+		// display: block;
+
+		// width: 100%;
+		
+		&.s1 {
+			@include btn($s1);
+		}
+		&.s2 {
+			@include btn($s2);
+		}
+		&.s3 {
+			@include btn($s3);
+		}
+		&.s4 {
+			@include btn($s4);
+		}	
+		&.s5 {
+			@include btn($s5);
+		}
+		&.s6 {
+			@include btn($s6);
+		}
+
+		&.sbold {
+			font-weight: bold !important;
+		}
+	}
+}
